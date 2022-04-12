@@ -19,3 +19,5 @@ Route::get('/', function () {
 });
 
 Route::resource('estudiante', EstudianteController::class);
+
+Route::get('imprimirEstudiantes', 'App\Http\Controllers\PdfController@imprimirEstudiantes') -> name('imprimirEstudiantes');

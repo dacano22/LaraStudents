@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Estudiante;
+use App\Http\Requests\EstudianteFormRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
@@ -35,7 +36,7 @@ class EstudianteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EstudianteFormRequest $request)
     {
         $datos = $request->except('_token');
         Estudiante::insert($datos);

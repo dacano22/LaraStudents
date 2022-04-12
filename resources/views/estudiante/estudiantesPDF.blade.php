@@ -1,8 +1,14 @@
-@extends('plantilla')
-
-@section('seccion')
-<section>
-    <h1 class="m-4 text-center">Tabla de estudiantes</h1>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de estudiantes</title>
+    <link rel="stylesheet" href="{{ public_path('css/app.css') }}">
+</head>
+<body>
+<h1 class="m-4 text-center">Tabla de estudiantes</h1>
     <table class="table text-center m-auto mb-3">
         <thead class="table-light">
             <tr class="table-success">
@@ -30,14 +36,6 @@
                 <td>{{$estudiante -> DireccionResidencia}}</td>
                 <td>{{$estudiante -> NombrePadre}}</td>
                 <td>{{$estudiante -> NombreMadre}}</td>
-                <td>
-                    <form action="{{ url('/estudiante/'.$estudiante->id) }}" method="POST">
-                        <a href="{{ url('/estudiante/'.$estudiante->id.'/edit') }}" class="btn btn-primary">Editar</a>
-                        @csrf
-                        {{ method_field('DELETE') }}
-                        <input onclick="return confirm('¿Estás seguro de eliminar el estudiante {{$estudiante -> Nombre}}?')" class="btn btn-danger" type="submit" value="Eliminar">
-                    </form>
-                </td>
             </tr>
             @endforeach
             <tr>
@@ -47,9 +45,5 @@
             </tr>
         </tbody>
     </table>
-    {!! $estudiantes->links() !!}
-    <a href="{{ url('imprimirEstudiantes') }}" class="pull-right mx-auto">
-        <button class="btn btn-success">Imprimir PDF</button>
-    </a>
-</section>
-@endsection
+</body>
+</html>
